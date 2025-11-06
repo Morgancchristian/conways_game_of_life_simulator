@@ -1,0 +1,12 @@
+*.o
+*.a
+GOLApp
+build/
+.DS_Store
+._*
+
+.vscode/
+.idea/
+*.swp
+
+Thumbs.db
