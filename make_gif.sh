@@ -14,11 +14,11 @@ OUTPUT_FILE="output/$1"
 GIF_NAME="output/gifs/$2.gif"
 FRAMES_DIR=$(mktemp -d)
 
-# Catppuccin Macchiato colors
+
 CELL_SIZE=60
-DEAD_COLOR="#24273a"      # Dark purplish-blue
-ALIVE_COLOR="#a6e3a1"     # Green
-DYING_COLOR="#89b4fa"     # Blue
+DEAD_COLOR="#24273a"
+ALIVE_COLOR="#a6e3a1"
+DYING_COLOR="#89b4fa"
 
 python3 << EOF
 from PIL import Image, ImageDraw

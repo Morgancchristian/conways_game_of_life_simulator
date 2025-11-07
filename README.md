@@ -76,6 +76,14 @@ X X X X X
 - Remaining lines: grid state where `O` represents a live cell and `X` represents a dead cell
 - Whitespace between characters is ignored
 
+**Important:** The header format is `<height> <width>`, not `<width> <height>`. The height must match the number of rows that follow. For example:
+
+```
+18 11
+```
+
+means 11 rows with 18 columns each. If the dimensions don't match the actual grid, you'll get an error.
+
 ## Game Rules
 
 ### Standard Mode
