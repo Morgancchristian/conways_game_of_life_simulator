@@ -8,11 +8,10 @@
 
 #include <string>
 #include <vector>
-
+#include <fstream>
 using namespace std;
 
 class GameOfLife {
-
 private:
     int width;
     int height;
@@ -24,7 +23,6 @@ private:
     bool wraparound;
 
 public:
-
     GameOfLife(int width, int height, string gameString, bool threeState = false, bool wraparound = false);
 
     void setWidth(int width);
@@ -46,5 +44,6 @@ public:
     void next();
     void nextNGen(int n);
     void printGame();
+    void printGameToFile(ofstream& outFile);
 };
 #endif

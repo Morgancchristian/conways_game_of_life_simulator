@@ -10,3 +10,6 @@ build/
 *.swp
 
 Thumbs.db
+
+output/*.txt
+output/frames/

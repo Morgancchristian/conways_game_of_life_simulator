@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "ArgParser.h"
 #include "GOLparser.h"
 #include "GameOfLife.h"
@@ -23,6 +24,8 @@ int main(int argc, char *argv[]) {
     string fileName = argParser.getFileName();
     int generations = argParser.getGenerations();
     int printInterval = argParser.getPrintInterval();
+    bool writeToFile = argParser.shouldWriteToFile();
+    string outputFile = argParser.getOutputFile();
 
 
     GOLparser fileParser;
@@ -57,15 +60,40 @@ int main(int argc, char *argv[]) {
 
     GameOfLife game(width, height, gameBoardString, isThreeState, isWraparound);
     game.initBoard();
-    game.printGame();
-    cout << endl;
+
+    ofstream outFileStream;
+        if (writeToFile) {
+            string fullPath = "output/" + outputFile;
+            outFileStream.open(fullPath);
+            if (!outFileStream) {
+                cerr << "Error: Could not open output file: " << outputFile << endl;
+                return 1;
+            }
+        }
+
+    if (writeToFile) {
+            game.printGameToFile(outFileStream);
+        } else {
+            game.printGame();
+            cout << endl;
+        }
 
     for (int gen = 1; gen <= generations; gen++) {
         game.next();
         if (gen % printInterval == 0) {
-            game.printGame();
-            cout << endl;
+            if (writeToFile) {
+                game.printGameToFile(outFileStream);
+            } else {
+                game.printGame();
+                cout << endl;
+            }
         }
     }
+
+    if (writeToFile) {
+        outFileStream.close();
+        cout << "Output written to: output/" << outputFile << endl;
+    }
+
     return 0;
 }

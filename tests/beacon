@@ -1,14 +1,9 @@
-13 13
-X O O O X X X O O O X X X
-X X X X X X X X X X X X X
-X X X X X X X X X X X X X
-O X X X O X X X X X X X O
-O X X X O X X X X X X X O
-O X X X O X X X X X X X O
-X X X X X X X X X X X X X
-X X X X X X X X X X X X X
-X X X X X X X X X X X X X
-O X X X O X X X X X X X O
-O X X X O X X X X X X X O
-O X X X O X X X X X X X O
-X O O O X X X O O O X X X
+8 8
+X X X X X X X X
+X X X X X X X X
+X X O O X X X X
+X X O O X X X X
+X X X X O O X X
+X X X X O O X X
+X X X X X X X X
+X X X X X X X X

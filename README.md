@@ -9,6 +9,7 @@ A C++ implementation of Conway's Game of Life. This version has options to run a
 - **Wraparound Mode** (`-w`): Grid where edges wrap around to all sides.
 - **Customizable Simulation**: Control the number of generations and print intervals.
 - **File-based Input**: Load initial cell configurations from text files.
+- **Optional Output Files**: Save simulation results to files for GIF generation
 
 ## Building
 
@@ -38,6 +39,7 @@ make clean
 
 - `-g <generations>`: Number of generations to simulate (default: 10)
 - `-p <interval>`: Print every nth generation (default: 1)
+- `-o <output_file>`: Write simulation output to a file (optional)
 - `-s`: Enable 3-state mode (mutually exclusive with `-w`)
 - `-w`: Enable wraparound/toroidal mode (mutually exclusive with `-s`)
 
@@ -46,6 +48,9 @@ make clean
 ```sh
 # Simulate a glider with wraparound for 20 generations, printing every 4th
 ./GOLApp -f tests/glider -w -g 20 -p 4
+
+# Simulate a glider with wraparound for 20 generations, printing every 4th, and write the results to an output file
+./GOLApp -f tests/glider -w -g 100 -p 2 -o glider_output.txt
 
 # Run a toad oscillator with default settings
 ./GOLApp -f tests/toad
@@ -87,6 +92,47 @@ X X X X X
 - The grid wraps around at edges, creating a toroidal topology
 - Cells at the edges have neighbors from the opposite side
 
+## GIF Generation
+
+To visualize simulations as animated GIFs, use the included `make_gif.sh` script:
+
+```sh
+./GOLApp -f tests/glider -w -g 100 -p 2 -o glider_output.txt
+./make_gif.sh glider_output.txt glider
+```
+
+The script will create `output/gifs/glider.gif`.
+
+## Visualizations
+
+**Classic Mode - Glider:**
+```sh
+./GOLApp -f tests/glider -g 15 -p 1 -o output_glider_classic_15gen.txt
+./make_gif.sh output_glider_classic_15gen.txt glider_classic_15gen
+```
+![Classic Glider](output/gifs/glider_classic_15gen.gif)
+
+**3-State Mode - Beacon:**
+```sh
+./GOLApp -f tests/beacon -s -g 20 -p 1 -o output_beacon_3state_20gen.txt
+./make_gif.sh output_beacon_3state_20gen.txt beacon_3state_20gen
+```
+![3-State Beacon](output/gifs/beacon_3state_20gen.gif)
+
+**Wraparound Mode - Glider:**
+```sh
+./GOLApp -f tests/glider -w -g 50 -p 1 -o output_glider_wraparound_50gen.txt
+./make_gif.sh output_glider_wraparound_50gen.txt glider_wraparound_50gen
+```
+![Wraparound Glider](output/gifs/glider_wraparound_50gen.gif)
+
+**Wraparound Mode - Pulsar:**
+```sh
+./GOLApp -f tests/pulsar -w -g 60 -p 1 -o output_pulsar_wraparound_60gen.txt
+./make_gif.sh output_pulsar_wraparound_60gen.txt pulsar_wraparound_60gen
+```
+![Wraparound Pulsar]!(output/gifs/pulsar_wraparound_60gen.gif)
+
 ## Project Structure
 
 ```
@@ -101,9 +147,8 @@ X X X X X
 │   ├── GameOfLife.cpp
 │   └── GOLparser.cpp
 ├── tests/            # Sample configuration files
-│   ├── glider.txt
-│   ├── blinker.txt
-│   └── ...
+├── output/           # Generated output files and GIFs
+├── make_gif.sh       # GIF generation script
 ├── Makefile
 └── README.md
 ```

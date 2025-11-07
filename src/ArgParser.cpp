@@ -8,12 +8,12 @@
 #include <cstring>
 using namespace std;
 
-ArgParser::ArgParser(): fileName(""), generations(10), printInterval(1), threeState(false), wraparound(false) {}
+ArgParser::ArgParser(): fileName(""), generations(10), printInterval(1), threeState(false), wraparound(false), outputFile(""), writeToFile(false) {}
 
 int ArgParser::parseArgs(int argc, char* argv[]) {
     int c;
 
-    while ((c = getopt(argc, argv, "f:g:p:sw")) != -1) {
+    while ((c = getopt(argc, argv, "f:g:p:o:sw")) != -1) {
         switch (c) {
         case 'f':
             fileName = optarg;
@@ -23,6 +23,10 @@ int ArgParser::parseArgs(int argc, char* argv[]) {
             break;
         case 'p':
             printInterval = stoi(optarg);
+            break;
+        case 'o':
+            outputFile = optarg;
+            writeToFile = true;
             break;
         case 's':
             threeState = true;
@@ -71,4 +75,12 @@ bool ArgParser::isThreeState() {
 
 bool ArgParser::isWraparound() {
     return this->wraparound;
+}
+
+string ArgParser::getOutputFile() {
+    return this->outputFile;
+}
+
+bool ArgParser::shouldWriteToFile() {
+    return this->writeToFile;
 }

@@ -202,7 +202,7 @@ void GameOfLife::next() {
                     board[row][col] = 0;
                 } else {
                     if (aliveNeighbors == 3) {
-                        board[row][col] = 2;
+                        board[row][col] = 1;
                     }
                 }
             } else {
@@ -246,5 +246,25 @@ void GameOfLife::printGame() {
             }
         }
         cout << endl;
+    }
+}
+
+void GameOfLife::printGameToFile(ofstream& outFile) {
+    generation = getGeneration();
+    board = getBoard();
+    int numOfRows = getHeight();
+    int numOfCol = getWidth();
+
+    outFile << "Generation: " << generation << endl;
+
+    for(int row = 0; row < numOfRows; row++) {
+        for(int col = 0; col < numOfCol; col++) {
+            if (threeState && board[row][col] == 2) {
+                outFile << 'D';
+            } else {
+                outFile << board[row][col];
+            }
+        }
+        outFile << endl;
     }
 }

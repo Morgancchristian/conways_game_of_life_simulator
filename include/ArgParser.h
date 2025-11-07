@@ -21,17 +21,20 @@ private:
     int printInterval;
     bool threeState;
     bool wraparound;
-    int checkFlags();
+    string outputFile;
+    bool writeToFile;
 
 public:
 
     ArgParser();
-
     int parseArgs(int argc, char* argv[]);
+    int checkFlags();
     string getFileName();
     int getGenerations();
     int getPrintInterval();
     bool isThreeState();
     bool isWraparound();
+    string getOutputFile();
+    bool shouldWriteToFile();
 };
 #endif
