@@ -82,7 +82,7 @@ X X X X X
 18 11
 ```
 
-means 11 rows with 18 columns each. If the dimensions don't match the actual grid, you'll get an error.
+means 18 rows with 11 columns each. If the dimensions don't match the actual grid, you'll get an error.
 
 ## Game Rules
 
