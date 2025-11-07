@@ -41,7 +41,7 @@ make clean
 - `-p <interval>`: Print every nth generation (default: 1)
 - `-o <output_file>`: Write simulation output to a file (optional)
 - `-s`: Enable 3-state mode (mutually exclusive with `-w`)
-- `-w`: Enable wraparound/toroidal mode (mutually exclusive with `-s`)
+- `-w`: Enable wraparound (mutually exclusive with `-s`)
 
 ### Examples
 
@@ -97,7 +97,7 @@ means 11 rows with 18 columns each. If the dimensions don't match the actual gri
 - Dead cells with exactly 3 neighbors enter the dying state
 
 ### Wraparound Mode (`-w`)
-- The grid wraps around at edges, creating a toroidal topology
+- The grid wraps around at edges
 - Cells at the edges have neighbors from the opposite side
 
 ## GIF Generation
