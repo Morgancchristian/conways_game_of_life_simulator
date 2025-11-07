@@ -131,7 +131,7 @@ The script will create `output/gifs/glider.gif`.
 ./GOLApp -f tests/pulsar -w -g 60 -p 1 -o output_pulsar_wraparound_60gen.txt
 ./make_gif.sh output_pulsar_wraparound_60gen.txt pulsar_wraparound_60gen
 ```
-![Wraparound Pulsar]!(output/gifs/pulsar_wraparound_60gen.gif)
+![Wraparound Pulsar](output/gifs/pulsar_wraparound_60gen.gif)
 
 ## Project Structure
 
